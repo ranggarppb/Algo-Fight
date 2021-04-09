@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="w3-container">
+      <p><span class="hero-text"></span></p>
+    </div>
+    <div class="selection-pane">
+      <label for="task-select" class="selection-label" id="task-label"
+        >Select Task</label
+      >
+      <div class="select" id="task-select">
+        <select>
+          <option value="" selected disabled hidden>Task to be Fought</option>
+          <option value="sorting">Sorting Arrays</option>
+          <option value="path-finding">Path Finding (Incoming Feature)</option>
+        </select>
+        <span class="focus"></span>
+      </div>
+      <label for="algo1-select" class="selection-label" id="algo1-label"
+        >Select Algorithm 1</label
+      >
+      <div class="select" id="algo1-select">
+        <select></select>
+        <span class="focus"></span>
+      </div>
+      <label for="algo2-select" class="selection-label" id="algo2-label"
+        >Select Algorithm 2</label
+      >
+      <div class="select" id="algo2-select">
+        <select></select>
+        <span class="focus"></span>
+      </div>
+      <div class="fight-button">
+        <button type="button">Fight!</button>
+      </div>
+    </div>
+    <div id="arena"></div>
+    <script src="./js/textRotator.js"></script>
+    <script type="module">
+      import { fight } from "./js/selectionPane.js"
+      fight()
+    </script>
+    <!-- <script src="./js/selectionPane.js" type="module"></script> -->
+    <!-- <script src="./js/sortingArenaOrchestration.js" type="module"></script> -->
+    <!-- <script type="module">
+      import { SortAnimation } from "./js/animation.js";
+      import {
+        quickSortDom,
+        quickSortAnimateDom,
+      } from "./js/sorting-algorithm/quickSort.js";
+
+      let sortAnimation = new SortAnimation();
+      var fightButton = document.getElementsByClassName("fight-button")[0].getElementsByTagName("button")[0];
+      sortAnimation.ownedMethod({
+        quick: {
+          method: quickSortDom,
+          animationMethod: quickSortAnimateDom,
+        },
+      });
+
+      fightButton.addEventListener("click", function () {
+        var arrDomBox = document.querySelector("#box1");
+        var algoSelected1 = document.getElementById("algo1-select")[0];
+        console.log(algoSelected1);
+        sortAnimation.getData(arrDomBox, algoSelected1);
+        sortAnimation.timer = setInterval(
+          sortAnimation.startAnimation(),
+          sortAnimation.speed
+        );
+      });
+    </script> -->
+  </body>
+</html>
