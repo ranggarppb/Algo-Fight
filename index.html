@@ -39,38 +39,8 @@
     </div>
     <div id="arena"></div>
     <script src="./js/textRotator.js"></script>
-    <script type="module">
-      import { fight } from "./js/selectionPane.js"
-      fight()
-    </script>
-    <!-- <script src="./js/selectionPane.js" type="module"></script> -->
-    <!-- <script src="./js/sortingArenaOrchestration.js" type="module"></script> -->
-    <!-- <script type="module">
-      import { SortAnimation } from "./js/animation.js";
-      import {
-        quickSortDom,
-        quickSortAnimateDom,
-      } from "./js/sorting-algorithm/quickSort.js";
-
-      let sortAnimation = new SortAnimation();
-      var fightButton = document.getElementsByClassName("fight-button")[0].getElementsByTagName("button")[0];
-      sortAnimation.ownedMethod({
-        quick: {
-          method: quickSortDom,
-          animationMethod: quickSortAnimateDom,
-        },
-      });
-
-      fightButton.addEventListener("click", function () {
-        var arrDomBox = document.querySelector("#box1");
-        var algoSelected1 = document.getElementById("algo1-select")[0];
-        console.log(algoSelected1);
-        sortAnimation.getData(arrDomBox, algoSelected1);
-        sortAnimation.timer = setInterval(
-          sortAnimation.startAnimation(),
-          sortAnimation.speed
-        );
-      });
-    </script> -->
+    <script type="module" src="./js/selectionPane.js"></script>
+    <!-- <script type="module" src="./js/index.js"></script>
+    <script type="module" src="./js/selectionPane.js"></script> -->
   </body>
 </html>

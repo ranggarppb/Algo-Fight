@@ -16,10 +16,7 @@ var rotateSentences = (function () {
     } else {
       index = words.indexOf(currentWord) + 1;
     }
-    // let currentIndex = Math.floor(Math.random() * (max - min + 1)) + min;
 
-    //Generates a random number between beginning and end of words array
-    // return currentIndex;
     return index;
   };
 
