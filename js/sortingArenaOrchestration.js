@@ -21,14 +21,20 @@ export const orchestrateSorting = () => {
   var arrDomBox1 = document.querySelector("#box1"),
     arrDomBox2 = document.querySelector("#box2");
   let fightButton = document.querySelector(".fight-button");
-  let sortAnimation = new SortAnimation();
-  sortAnimation.ownedMethod({
+  let sortAnimation1 = new SortAnimation();
+  let sortAnimation2 = new SortAnimation();
+  sortAnimation1.ownedMethod({
     quick: {
       method: quickSortDom,
       animationMethod: quickSortAnimateDom,
     },
   });
-
+  sortAnimation2.ownedMethod({
+    bubble: {
+      method: quickSortDom,
+      animationMethod: quickSortAnimateDom,
+    },
+  });
   sliderCountNumber.onchange = function () {
     let countNumberValue = sliderCountNumber.value;
     detailCountNumber.innerText = countNumberValue;
@@ -72,17 +78,28 @@ export const orchestrateSorting = () => {
   };
   fightButton.onclick = function () {
     setTimeout(function () {
-      var arrDomBox = document.querySelector("#box1");
+      var DomBox1 = document.querySelector("#box1");
+      var DomBox2 = document.querySelector("#box2");
       var speed = document
         .getElementById("speed-detail")
         .getElementsByTagName("span")[0].innerText;
-      speed = (Number(4/speed.split(" ")[0])) * 40;
-      console.log(speed);
+      speed = Number(4 / speed.split(" ")[0]) * 40;
       var algoSelected1 = document
         .getElementById("algo1-select")
         .getElementsByTagName("select")[0].value;
-      sortAnimation.getData(arrDomBox, algoSelected1);
-      sortAnimation.timer = setInterval(sortAnimation.startAnimation(), speed);
+      var algoSelected2 = document
+        .getElementById("algo2-select")
+        .getElementsByTagName("select")[0].value;
+      sortAnimation1.getData(DomBox1, algoSelected1);
+      sortAnimation2.getData(DomBox2, algoSelected2);
+      sortAnimation1.timer = setInterval(
+        sortAnimation1.startAnimation(),
+        speed
+      );
+      sortAnimation2.timer = setInterval(
+        sortAnimation2.startAnimation(),
+        speed
+      );
     }, 0);
   };
 };
