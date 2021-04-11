@@ -12,32 +12,39 @@ export const capitalize = (s) => {
   return s[0].toUpperCase() + s.slice(1);
 };
 
+export const loadHTML = (href) => {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.open("GET", href, false);
+  xmlhttp.send();
+  return xmlhttp.responseText;
+};
+
 export const loadScripts = (scripts, complete) => {
-  var loadScript = function( src ) {
-      var xmlhttp, next;
-      if (window.XMLHttpRequest)  {
-          xmlhttp = new XMLHttpRequest();
-      } else {
-          try {
-               xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-          } catch(e) {
-              return;
-          }
+  var loadScript = function (src) {
+    var xmlhttp, next;
+    if (window.XMLHttpRequest) {
+      xmlhttp = new XMLHttpRequest();
+    } else {
+      try {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+      } catch (e) {
+        return;
       }
-      xmlhttp.onreadystatechange = function() {
-          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-              eval(xmlhttp.responseText);
-              next = scripts.shift();
-              if ( next ) {
-                  loadScript(next);
-              } else if ( typeof complete == 'function' ) {
-                  complete();
-              }
-          }
+    }
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        eval(xmlhttp.responseText);
+        next = scripts.shift();
+        if (next) {
+          loadScript(next);
+        } else if (typeof complete == "function") {
+          complete();
+        }
       }
-      xmlhttp.open("GET", src , true);
-      xmlhttp.send();
+    };
+    xmlhttp.open("GET", src, true);
+    xmlhttp.send();
   };
 
-  loadScript( scripts.shift() );
-}
+  loadScript(scripts.shift());
+};
